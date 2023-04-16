@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container_dash">
+    <section class="left_container">
+      <div class="upper_left">
+        <div class="horizontal_bar_container"><div class="horizontal_bar container"><canvas id="horizontal_bar"></canvas></div></div>
+        <script>
+          var horizontal_bar_ctx = document.getElementById('horizontal_bar').getContext('2d');
+          var lineChart = new Chart(horizontal_bar_ctx, {
+            type: 'bar', 
+            data: {
+              labels: ['Brazil', 'US', 'France'],
+              datasets: [
+                {
+                  label:'Men',
+                  data: [234, 789, 468]
+                },
+                {
+                  label:'Women',
+                  data: [284, 345, 856]
+                }
+              ]
+            },
+            options: {
+              indexAxis: 'y',
+              responsive: true,
+              maintainAspectRatio: false,
+              scales: {
+                y: {
+                  grid: {
+                    drawOnChartArea: false,
+                  }
+                },
+                x: {
+                  grid: {
+                    drawOnChartArea: false,
+                  }
+                }
+              },
+              plugins:{
+                title: {
+                display: true,
+                text: 'Top consumers countries',
+              }
+              }
+            },
+          })
+        </script>
+        <div class="visitors">
+          <div class="visitors_card container">
+              <h5>Online visitors</h5>
+              <h1>1.345</h1>
+              <h6>people are now on the site</h6>
+          </div>
+        </div>
+      </div>
+      <div class="down_left">
+        <div class="line_bar_container container"><canvas id="lineChart"></canvas></div>
+          <script>
+            var ctx = document.getElementById('lineChart').getContext('2d');
+            var lineChart = new Chart(ctx, {
+              type: 'line', 
+              data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                  {
+                    label: 'Anual sales',
+                    data: [234, 3467, 1932, 4545, 3467, 1231, 3676, 3646, 5877, 6787, 4533, 5647], 
+                    lineTension:0.1, 
+                  },
+                  {
+                    label: 'Expenses',
+                    data: [1254, 1543, 1812, 1434, 1834, 1212, 1234, 1053, 1321, 1332, 2344, 1245], 
+                    fill: false,
+                    type: 'bar',
+                    stack: 'combined'
+                  }
+                ]
+              }, 
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  y: {
+                    grid: {
+                      drawOnChartArea: false,
+                    }
+                  },
+                  x: {
+                    grid: {
+                      drawOnChartArea: false,
+                    }
+                  }
+                },
+              },
+            })
+          </script>
+        
+      </div>
+    </section>
+    <section class="right_container">
+      <div class="right_upper"><div class="bar_chart_container container"><canvas id="bar_chart"></canvas></div></div>
+      <script>
+        var ctx_bar_chart = document.getElementById('bar_chart').getContext('2d');
+        var bar_chart = new Chart(ctx_bar_chart, {
+          type: 'bar',
+          data: {
+            labels: ['Amazon', 'Ebay', 'Aliexpress', 'Alibaba'],
+            datasets: [{
+              label: 'Sells',
+              data: [334, 202, 134, 185]
+            },
+            {
+              label: 'returns',
+              data: [123, 345, 246, 128, 369]
+            }
+          ]
+          },
+          options: {
+            scales: {
+                  y: {
+                    grid: {
+                      drawOnChartArea: false,
+                    },
+                    stacked: true,
+                  },
+                  x: {
+                    grid: {
+                      drawOnChartArea: false,
+                    },
+                    stacked: true,
+                  }
+                },
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+              legend: { 
+                position: 'right', 
+                display: false,
+              },
+              title: {
+                display: true,
+                position: 'top',
+                text: 'Marketplace sells',
+              }
+            }
+          }
+        })
+        </script>
+      <div class="right_middle"><div class="semi_dou_chart_container container"><canvas id="percentage"></canvas></div></div>
+        <script>
+          var ctx_percentage = document.getElementById('percentage').getContext('2d');
+          var percentageChart = new Chart(ctx_percentage, {
+            type: 'bubble',
+            data: {
+              datasets: [{
+                label: 'Distribuition',
+                data: [{
+                  x: 3,
+                  y: 5,
+                  r: 7
+                }, {
+                  x: 4,
+                  y: 9,
+                  r: 4
+                }, {
+                  x: 8,
+                  y: 6,
+                  r: 9
+                }
+              ]
+
+        
+              },
+              ]
+
+            },
+            options: { 
+              maintainAspectRatio: false,
+              responsive: true,
+              plugins: {
+                legend: { 
+                  position: 'right', 
+                  display: false,
+                },
+                title: {
+                  display: true,
+                  position: 'top',
+                  text: 'Distribuition'
+                }
+              }
+            }
+          })
+          
+          </script>
+      <div class="right_down"><div class="dou_chart_container container"><canvas id="channels"></canvas></div></div>
+      <script>
+        var ctx_channels = document.getElementById('channels').getContext('2d');
+        var channelsChart = new Chart(ctx_channels, {
+          type: 'doughnut',
+          data: {
+            labels: ['Organic', 'Facebook', 'Physical store', 'Ads'],
+            datasets: [{
+              label: 'Customers',
+              data: [234, 434, 123, 153]
+            }]
+          },
+          options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            plugins: {
+              legend: { 
+                position: 'right', 
+              },
+              title: {
+                display: true,
+                text: 'Channels of aquisition'
+              }
+            }
+          }
+        })
+        </script>
+    </section>
+  </div>
+</body>
+</html>
+
+
+
+
